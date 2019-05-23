@@ -61,7 +61,7 @@ header>h1 {
     /* position absolute - 0.0'dan hesaplar. Net değerler vermek için kullanılır */
     position: absolute;
     top: 30px;
-    left: -25px;
+    left: -20px;
 }
 #computer-label{
     position: absolute;

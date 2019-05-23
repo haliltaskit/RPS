@@ -1,3 +1,4 @@
+let name = prompt("İsminiz nedir?","Yarışmacı");
 let user = document.getElementById("user-label");
 user.innerHTML=name;
 // defaultGiris.classList.add('user');
@@ -30,6 +31,11 @@ function getRandomChoice() {
     const randomNumber = Math.floor(Math.random() * 3);
     return choices[randomNumber];
 }
+
+// function checkName(username)
+// {
+//     return typeof(username)==="string" ? username : "Yarışmacı" ;
+// }
 
 function convertToWord(letter) {
     if (letter === "r") return "Taş";
