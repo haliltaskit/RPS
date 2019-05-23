@@ -1,4 +1,3 @@
-let name = prompt("İsminiz nedir?", "Yarışmacı");
 let user = document.getElementById("user-label");
 user.innerHTML=name;
 // defaultGiris.classList.add('user');
@@ -26,7 +25,6 @@ function main() {
     paper_div.addEventListener('click', () => game("p"));
     scissors_div.addEventListener('click', () => game("s"));
 }
-
 function getRandomChoice() {
     const choices = ['r', 'p', 's'];
     const randomNumber = Math.floor(Math.random() * 3);
