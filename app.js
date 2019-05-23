@@ -66,7 +66,7 @@ function win(userChoice, computerChoice) {
     update();
     // Es6 ile $ kullanımı geldi! 
     const userChoice_div = document.getElementById(userChoice);
-    result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} beats ${convertToWord(computerChoice)}${smallCompWord}.`;
+    result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} ➡️ ${convertToWord(computerChoice)}${smallCompWord}.`;
     actionMessage_p.innerHTML="Kazandın!!!🌊";
     // .classList DOM'la gelen ve bize o elemente ait bütün classları dizi olarak dönen metot. Add ile yeni metot ekledik. Green-glow class'ını verdik.
     userChoice_div.classList.add('green-glow');
@@ -77,7 +77,7 @@ function lose(userChoice, computerChoice) {
     computerScore++;
     const compChoice_div = document.getElementById(computerChoice);
     update();
-    result_p.innerHTML = `${convertToWord(computerChoice)} ${smallCompWord} beats ${convertToWord(userChoice)} ${smallUserWord}.`;
+    result_p.innerHTML = `${convertToWord(computerChoice)} ${smallCompWord} ⬅️ ${convertToWord(userChoice)} ${smallUserWord}.`;
     actionMessage_p.innerHTML="Kaybettin !!!🤖";
     compChoice_div.classList.add('red-glow');
     setTimeout(function () { compChoice_div.classList.remove('red-glow') }, 600);
@@ -87,7 +87,7 @@ function draw(userChoice, computerChoice) {
     // userScore++;
     // computerScore++;
     const userChoice_div = document.getElementById(userChoice);
-    result_p.innerHTML = `${convertToWord(computerChoice)} ${smallCompWord} == ${convertToWord(userChoice)} ${smallUserWord}.`;
+    result_p.innerHTML = `${convertToWord(computerChoice)} ${smallCompWord} 🔃 ${convertToWord(userChoice)} ${smallUserWord}.`;
     actionMessage_p.innerHTML="Berabere !!!🤝";
 
     userChoice_div.classList.add('gray-glow');
