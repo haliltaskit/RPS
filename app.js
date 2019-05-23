@@ -1,4 +1,4 @@
-let name = prompt("İsminiz nedir?", "User");
+let name = prompt("İsminiz nedir?", "Yarışmacı");
 let user = document.getElementById("user-label");
 user.innerHTML=name;
 // defaultGiris.classList.add('user');
