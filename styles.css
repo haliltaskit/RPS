@@ -10,6 +10,8 @@
 
 body{
     background-color: #262731;
+    width: 100vw;
+    height: 100vh;
     /* Alttakiler ile text seçimini engelledim. */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
