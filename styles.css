@@ -9,8 +9,6 @@
 }
 
 body{
-    width: 100vw;
-    height: 100vh;
     background-color: #262731;
     /* Alttakiler ile text seçimini engelledim. */
     -webkit-touch-callout: none;
@@ -26,22 +24,12 @@ body{
 
 #modalLoginAvatar{
     position: absolute;
-    width: 50vw;
-    height: 70vh;
+    width: 60%;
+    height: 60%;
     left:35%;
     top:10%;
 }
 
-@media (max-width:450px)
-{
-    #modalLoginAvatar{
-        position: absolute;
-        width: 60vw;
-        height: 65vh;
-        left:25%;
-        top:10%;
-    }
-}
 header{
     background: white;
     padding:20px;
