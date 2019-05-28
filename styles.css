@@ -22,12 +22,14 @@ body{
     padding: 0 !important;
 }
 
-#modalLoginAvatar{
+#modalLoginAvatar > {
     position: absolute;
-    /* width: 50vw; */
-    height: 70vh;
+    width: 50vw;
+    height: 60vh;
     left:35%;
     top:10%;
+    margin: 0;
+    padding: 0;
 }
 
 header{
