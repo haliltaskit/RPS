@@ -34,6 +34,10 @@ body{
 {
     #modalLoginAvatar{
         position: absolute;
+        width: 60vw;
+        height: 65vh;
+        left:25%;
+        top:10%;
     }
 }
 header{
