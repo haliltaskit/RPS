@@ -27,13 +27,13 @@ body{
 #modalLoginAvatar{
     position: absolute;
     width: 60%;
-    height: 60%;
+    height: 65%;
     left:35%;
     top:10%;
 }
 
 #btnSend{
-    Margin: 0px !important;
+    margin-bottom: 20px !important;
     Padding: 10px !important;
 }
 
