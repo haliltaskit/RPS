@@ -5,18 +5,19 @@ var userFlag = document.querySelector("#userFlagID");
 
 
 $(window).on('load', function () {
-    $('#modalLoginAvatar').modal('show');
-});
-
-$('#btnSend').on('click', function () {
+    newGame();
 });
 
 $('#btnSend').on('keydown click', function (event) {
-    user.innerHTML = $(name_input).val();
-    if (event.keyCode === 13 || event.type === 'click') {
-        $('#modalLoginAvatar').modal('hide');
-        console.log(user.innerHTML);
+    var tempName = $(name_input).val();
+    if (tempName) {
+        user.innerHTML = tempName;
+        if (event.keyCode === 13 || event.type === 'click') {
+            $('#modalLoginAvatar').modal('hide');
+            console.log(user.innerHTML);
+        }
     }
+
 });
 
 fetch('https://ipapi.co/json')
@@ -31,7 +32,6 @@ function updateUser(country, city, country_name) {
     user.city = city;
     userFlag = new Image();
     $("#userFlagID").attr({ "src": "https://www.countryflags.io/" + country + "/shiny/32.png" });
-    // userFlag.src = "https://www.countryflags.io/"+country+"/shiny/64.png";
 };
 
 // $("#iconHelp").on({
@@ -138,19 +138,20 @@ function draw(userChoice, computerChoice) {
 function update() {
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
-    setTimeout(() => checkWinner(userScore, computerScore) , 600);
-    // checkWinner(userScore, computerScore);
+    setTimeout(() => checkWinner(userScore, computerScore), 600);
 };
-
+const finalScore = 5;
 function checkWinner(userScore, computerScore) {
-    var finalScore = 5;
+
     if (userScore == finalScore) {
-        actionMessage_p.innerHTML = "The winner is User"
-        finishGame();
+        actionMessage_p.innerHTML = "Kazanan " + user.innerHTML;
+        setTimeout(function () { finishGame(); }, (5*1000));
+        newGame();
     }
     else if (computerScore == finalScore) {
-        actionMessage_p.innerHTML = "The winner is Computer"
-        finishGame();
+        actionMessage_p.innerHTML = "Kazanan TKM";
+        setTimeout(function () { finishGame(); }, (5*1000));
+        newGame();
     }
     else {
         console.log("Not finished yet")
@@ -162,6 +163,10 @@ function finishGame() {
     computerScore = 0;
     user = "";
     // alert(actionMessage_p.innerHTML);
+}
+
+function newGame() {
+    $('#modalLoginAvatar').modal('show');
 }
 
 
