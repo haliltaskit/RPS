@@ -1,6 +1,8 @@
 const name_input = document.querySelector('#nameForm');
 const user_div = document.getElementById("user-label");
 let user = user_div;
+var userFlag = document.querySelector("#userFlagID");
+
 
 $(window).on('load', function () {
     $('#modalLoginAvatar').modal('show');
@@ -17,6 +19,20 @@ $('#btnSend').on('keydown click', function (event) {
     }
 });
 
+fetch('https://ipapi.co/json')
+    .then(res => res.json())
+    .then(res => {
+        updateUser(res.country, res.city, res.country_name);
+        console.log(user);
+    });
+
+function updateUser(country, city, country_name) {
+    user.country = country_name;
+    user.city = city;
+    userFlag = new Image();
+    $("#userFlagID").attr({ "src": "https://www.countryflags.io/" + country + "/shiny/32.png" });
+    // userFlag.src = "https://www.countryflags.io/"+country+"/shiny/64.png";
+};
 
 // $("#iconHelp").on({
 //     "mouseover": function () {
@@ -84,14 +100,13 @@ function game(userChoice) {
     }
 };
 
-
 function win(userChoice, computerChoice) {
     userScore++;
+    const userChoice_div = document.getElementById(userChoice);
+    actionMessage_p.innerHTML = "Kazandın!!!🌊";
     update();
     // Es6 ile $ kullanımı geldi! 
-    const userChoice_div = document.getElementById(userChoice);
     result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} ➡️ ${convertToWord(computerChoice)}${smallCompWord}`;
-    actionMessage_p.innerHTML = "Kazandın!!!🌊";
     // .classList DOM'la gelen ve bize o elemente ait bütün classları dizi olarak dönen metot. Add ile yeni metot ekledik. Green-glow class'ını verdik.
     userChoice_div.classList.add('green-glow');
     setTimeout(function () { userChoice_div.classList.remove('green-glow') }, 600);
@@ -100,9 +115,9 @@ function win(userChoice, computerChoice) {
 function lose(userChoice, computerChoice) {
     computerScore++;
     const compChoice_div = document.getElementById(computerChoice);
+    actionMessage_p.innerHTML = "Kaybettin !!!🤖";
     update();
     result_p.innerHTML = `${convertToWord(computerChoice)} ${smallCompWord} ⬅️ ${convertToWord(userChoice)} ${smallUserWord}`;
-    actionMessage_p.innerHTML = "Kaybettin !!!🤖";
     compChoice_div.classList.add('red-glow');
     setTimeout(function () { compChoice_div.classList.remove('red-glow') }, 600);
 
@@ -113,16 +128,40 @@ function draw(userChoice, computerChoice) {
     const userChoice_div = document.getElementById(userChoice);
     result_p.innerHTML = `${convertToWord(computerChoice)} ${smallCompWord} 🔃 ${convertToWord(userChoice)} ${smallUserWord}`;
     actionMessage_p.innerHTML = "Berabere !!!🤝";
-
+    update();
+    // checkWinner(userScore, computerScore);
     userChoice_div.classList.add('gray-glow');
     setTimeout(function () { userChoice_div.classList.remove('gray-glow') }, 600);
-    // update();
 
 };
 
 function update() {
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
+    setTimeout(() => checkWinner(userScore, computerScore) , 600);
+    // checkWinner(userScore, computerScore);
 };
+
+function checkWinner(userScore, computerScore) {
+    var finalScore = 5;
+    if (userScore == finalScore) {
+        actionMessage_p.innerHTML = "The winner is User"
+        finishGame();
+    }
+    else if (computerScore == finalScore) {
+        actionMessage_p.innerHTML = "The winner is Computer"
+        finishGame();
+    }
+    else {
+        console.log("Not finished yet")
+    }
+}
+
+function finishGame() {
+    userScore = 0;
+    computerScore = 0;
+    user = "";
+    // alert(actionMessage_p.innerHTML);
+}
 
 

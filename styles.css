@@ -92,6 +92,19 @@ footer{
     top: 30px;
     right:-20px;
 }
+
+#userFlagID{
+    position: absolute;
+    top: 50px;
+    left: -5%;  
+}
+#computerID{
+    position: absolute;
+    top: 55px;
+    right: -5%;
+    color:#ffcc80;
+}
+
 .result>p{
     color: white;
     text-align: center;
